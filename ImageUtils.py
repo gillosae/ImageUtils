@@ -5,18 +5,20 @@ class ImageUtils:
     def __init__(self, input_path: str):
         self.im = Image.open(input_path)
 
-        # Applying EXIF Orientation Flag
-        for orientation in ExifTags.TAGS.keys():
-            if ExifTags.TAGS[orientation] == "Orientation":
-                break
-        exif = dict(self.im._getexif().items())
+        if self.im._getexif() is not None:
+            # Applying EXIF Orientation Flag
+            for orientation in ExifTags.TAGS.keys():
+                if ExifTags.TAGS[orientation] == "Orientation":
+                    break
 
-        if exif[orientation] == 3:
-            self.im = self.im.rotate(180, expand=True)
-        elif exif[orientation] == 6:
-            self.im = self.im.rotate(270, expand=True)
-        elif exif[orientation] == 8:
-            self.im = self.im.rotate(90, expand=True)
+            exif = dict(self.im._getexif().items())
+
+            if exif[orientation] == 3:
+                self.im = self.im.rotate(180, expand=True)
+            elif exif[orientation] == 6:
+                self.im = self.im.rotate(270, expand=True)
+            elif exif[orientation] == 8:
+                self.im = self.im.rotate(90, expand=True)
 
         self.im_width, self.im_height = self.im.size
         # print("Input image : " + input_path)
@@ -55,7 +57,3 @@ class ImageUtils:
 
 if __name__ == "__main__":
     pass
-
-
-# TO DO
-## multiple folders
