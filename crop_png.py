@@ -13,6 +13,8 @@ if not os.path.isdir(after_path):
     os.mkdir(after_path)
 
 for im_path in tqdm(os.listdir(before_path)):
+    if not (im_path.endswith(".png") or im_path.endswith(".jpg")):
+        continue
     IU(os.path.join(before_path, im_path)).crop_bbox().save(
         os.path.join(after_path, im_path)
     )
