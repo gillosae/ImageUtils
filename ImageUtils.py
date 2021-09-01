@@ -54,6 +54,9 @@ class ImageUtils:
         self.im.paste(logo, (logo_xpos, logo_ypos), logo)
         return self.im
 
+    def wash(self):
+        return self.im
+
 
 if __name__ == "__main__":
     pass
