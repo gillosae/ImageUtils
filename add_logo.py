@@ -15,7 +15,7 @@ if not os.path.isdir(after_path):
 if not os.path.isdir(logo_path):
     os.mkdir(logo_path)
 
-logo_name = "kj_logo.png"
+logo_name = "baro_white_transparent.png"
 logo = Image.open(os.path.join(logo_path, logo_name))
 
 
