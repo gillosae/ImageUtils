@@ -33,7 +33,7 @@ class ImageUtils:
             return self.im.crop(box)
 
     # thumbnail_size=None
-    def add_logo(self, logo,):
+    def add_logo(self, logo, size_ratio=1):
         logo_width, logo_height = logo.size
 
         # Set logo size, logo width
@@ -42,7 +42,9 @@ class ImageUtils:
         else:  # portrait
             logo.thumbnail((self.im_width, self.im_width))
 
-        new_logo_width, new_logo_height = logo.size
+        new_logo_width, new_logo_height = tuple(
+            x * size_ratio for x in logo.size
+        )
 
         # Set logo pos
         logo_xpos = int(self.im_width / 2 - new_logo_width / 2)  # center

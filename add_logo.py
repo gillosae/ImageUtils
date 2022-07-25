@@ -26,6 +26,6 @@ for dir_path in os.listdir(before_path):
                 os.mkdir(os.path.join(after_path, dir_path))
             if not (im_path.endswith(".png") or im_path.endswith(".jpg")):
                 continue
-            IU(os.path.join(before_path, dir_path, im_path)).add_logo(logo).save(
+            IU(os.path.join(before_path, dir_path, im_path)).add_logo(logo, 0.5).save(
                 os.path.join(after_path, dir_path, im_path)
             )
